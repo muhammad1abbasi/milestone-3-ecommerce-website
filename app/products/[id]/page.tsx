@@ -1,4 +1,6 @@
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
+import Link from "next/link";
 interface Product {
   id: number;
   name: string;
@@ -26,27 +28,28 @@ const ProductDetails = async ({ params }: { params: { id: string } }) => {
     <div>
       <Navbar></Navbar>
       <div className="p-4">
-      <img
+      <Image
         src={product.image}
         alt={product.name}
+        width={200} height={200}
         className="w-full max-w-md mx-auto object-cover rounded-md"
       />
       <div className="flex flex-col justify-center items-center ">
       <h1 className="text-2xl font-bold mt-4">{product.name}</h1>
       <p className="text-gray-600 mt-2">${product.price}</p>
       <p className="mt-4  text-xl text-center text-slate-500 font-bold">{product.description}</p>
-      <a
+      <Link
         href="/cart"
         className="mt-4 inline-block bg-red-500 text-white py-2 px-4 rounded-md hover:bg-blue-700"
       >
         Add To Card 
-      </a>
-      <a
+      </Link>
+      <Link
         href="/"
         className="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"
       >
         Back to Home
-      </a>
+      </Link>
       </div>
     </div>
     </div>
