@@ -10,6 +10,7 @@ interface Product {
   image: string;
 }
 
+
 const products: Product[] = [
   {
     id: 1,
@@ -37,11 +38,11 @@ const products: Product[] = [
   },
 ];
 
-const ProductDetails = async ({ params }: { params: { id: string } }) => {
-  const productId = params.id;
+const ProductDetails = ({ params }: { params: { id: string } }) => {
+  const productId = Number(params.id);
 
-  // Find the product
-  const product = products.find((p) => p.id === Number(productId));
+  
+  const product = products.find((p) => p.id === productId);
 
   if (!product) {
     return (
