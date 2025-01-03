@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Navbar from "@/components/Navbar";
 
 interface CartItem {
   id: number;
@@ -11,8 +12,9 @@ interface CartItem {
 
 const CartPage: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([
-    { id: 1, name: "Product 1", price: 100, quantity: 2 },
-    { id: 2, name: "Product 2", price: 200, quantity: 1 },
+    { id: 1, name: "Jacket", price: 100, quantity: 2 },
+    { id: 2, name: "High Neck Jersey", price: 300, quantity: 1 },
+    { id: 3, name: "Premium Jacket Black", price: 500, quantity: 1 },
   ]);
 
   const updateQuantity = (id: number, amount: number) => {
@@ -30,12 +32,15 @@ const CartPage: React.FC = () => {
   };
 
   return (
-    <div className="p-4">
+    
+    <div>
+      <Navbar></Navbar>
+      <div className="p-4 justify-center items-center flex flex-col space-y-10  ">
       <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-11">
           {cartItems.map((item) => (
             <div
               key={item.id}
@@ -67,6 +72,7 @@ const CartPage: React.FC = () => {
       <div className="mt-4">
         <h2 className="text-xl font-bold">Total: ${calculateTotal()}</h2>
       </div>
+    </div>
     </div>
   );
 };
